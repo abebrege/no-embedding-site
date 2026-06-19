@@ -4,9 +4,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './theme.css'
 import Frame from './components/frame.component.jsx'
 import Home from './components/screens/home/home.jsx'
-import LanguagesPage from './components/screens/languages/LanguagesPage.jsx'
-import LiteraturePage from './components/screens/literature/LiteraturePage.jsx'
-import InstitutionsPage from './components/screens/institutions/InstitutionsPage.jsx'
+import InventoryPage from './components/screens/inventory/InventoryPage.jsx'
+import { languagesConfig, literatureConfig, institutionsConfig } from './components/screens/inventory/configs.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -14,9 +13,9 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path="/" element={<Frame />}>
           <Route index element={<Home />} />
-          <Route path="languages" element={<LanguagesPage />} />
-          <Route path="literature" element={<LiteraturePage />} />
-          <Route path="institutions" element={<InstitutionsPage />} />
+          <Route path="languages" element={<InventoryPage config={languagesConfig} />} />
+          <Route path="literature" element={<InventoryPage config={literatureConfig} />} />
+          <Route path="institutions" element={<InventoryPage config={institutionsConfig} />} />
         </Route>
       </Routes>
     </BrowserRouter>

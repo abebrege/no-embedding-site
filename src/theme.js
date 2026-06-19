@@ -1,31 +1,35 @@
 const theme = {
   color: {
-    background: '#f8f9fa',
+    background: '#0b0f1a',
+    surface: '#121826',
+    surfaceAlt: '#0f141f',
     text: {
-      primary: '#212529',
-      secondary: '#6b6375',
-      heading: '#08060d',
+      primary: '#e6e9f0',
+      secondary: '#9aa3b2',
+      heading: '#f5f7fa',
     },
     border: {
-      primary: '#001219',
-      secondary: '#e5e4e7',
+      primary: '#2a3346',
+      secondary: '#1c2433',
     },
     accent: {
-      default: '#aa3bff',
-      background: 'rgba(170, 59, 255, 0.1)',
-      border: 'rgba(170, 59, 255, 0.5)',
+      default: '#3b82f6',
+      background: 'rgba(59, 130, 246, 0.12)',
+      border: 'rgba(59, 130, 246, 0.5)',
     },
     code: {
-      background: '#f4f3ec',
+      background: '#0f141f',
     },
+    // Retained so existing components (BackButton, DetailChip, home node cards)
+    // keep a valid token; removed when Home is rebuilt (Phase 8).
     social: {
-      background: 'rgba(244, 243, 236, 0.5)',
+      background: '#121826',
     },
     link: {
-      default: '#70a288',
-      hover: '#395748f3',
+      default: '#7aa2ff',
+      hover: '#a9c2ff',
     },
-    shadow: 'rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px',
+    shadow: '0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4)',
   },
 
   font: {
