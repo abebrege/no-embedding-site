@@ -6,27 +6,58 @@ import ExternalLink from './ExternalLink.jsx'
 const Row = styled('div')({
   display: 'flex',
   flexWrap: 'wrap',
+  alignItems: 'center',
   gap: theme.spacing.sm,
   marginBottom: theme.spacing.sm,
 })
 
-// A row of labeled external-link pills. Each prop is a URL; only the present
-// ones render. Renders nothing if no links are supplied.
-const LinkRow = ({ repo, paper, doi, group }) => {
-  const links = [
-    { href: repo, label: 'Repo' },
-    { href: paper, label: 'Open Access' },
-    { href: doi, label: 'DOI' },
-    { href: group, label: 'Research Group' },
-  ].filter((l) => l.href)
+// A non-interactive badge marking the paper as open access.
+const Badge = styled('span')({
+  fontFamily: theme.font.family.ui,
+  fontSize: theme.font.size.xs,
+  color: theme.color.accent.default,
+  padding: `${theme.spacing.xs} ${theme.spacing.sm}`,
+  border: `1px solid ${theme.color.accent.border}`,
+  backgroundColor: theme.color.accent.background,
+  borderRadius: theme.layout.borderRadius.sm,
+  whiteSpace: 'nowrap',
+})
 
-  if (links.length === 0) return null
+const GithubLink = styled('a')({
+  display: 'inline-flex',
+  alignItems: 'center',
+  '&:hover': { opacity: 0.7 },
+})
+
+// The dark GitHub mark needs inverting to stay visible in dark mode.
+const GithubLogo = styled('img')({
+  display: 'block',
+  '[data-theme="dark"] &': { filter: 'invert(1)' },
+})
+
+// A row of paper/repo links. `repo` renders as the GitHub logo, `paper` (the
+// open-access url) renders as an "Open Access" label, and `doi`/`group` render
+// as link pills. Each prop is a URL; only the present ones render. Renders
+// nothing when no links are supplied.
+const LinkRow = ({ repo, paper, doi, group }) => {
+  if (!repo && !paper && !doi && !group) return null
 
   return (
     <Row>
-      {links.map((l) => (
-        <ExternalLink key={l.label} href={l.href}>{l.label}</ExternalLink>
-      ))}
+      {repo && (
+        <GithubLink
+          href={repo}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Repository"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <GithubLogo src="/github.svg" alt="GitHub repository" width={20} height={20} />
+        </GithubLink>
+      )}
+      {paper && <Badge>Open Access</Badge>}
+      <ExternalLink href={doi}>DOI</ExternalLink>
+      <ExternalLink href={group}>Research Group</ExternalLink>
     </Row>
   )
 }

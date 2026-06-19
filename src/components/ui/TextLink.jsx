@@ -12,7 +12,16 @@ const Anchor = styled('a')({
 // otherwise (so a name/title is always visible, clickable only when a URL exists).
 const TextLink = ({ href, children }) => {
   if (!href) return <>{children}</>
-  return <Anchor href={href} target="_blank" rel="noopener noreferrer">{children}</Anchor>
+  return (
+    <Anchor
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={(e) => e.stopPropagation()}
+    >
+      {children}
+    </Anchor>
+  )
 }
 
 export default TextLink

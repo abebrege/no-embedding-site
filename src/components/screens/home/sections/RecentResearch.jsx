@@ -80,8 +80,9 @@ function RecentResearch() {
           {papers.map((paper) => {
             const group = paper.associations?.researchGroups?.[0]
             const institution = paper.associations?.institutions?.[0]
+            const paperUrl = paper.open_access_url || paper.doi_url
             return (
-              <Card key={paper.literatureId || paper.id}>
+              <Card key={paper.literatureId || paper.id} href={paperUrl}>
                 <PaperThumb title={paper.title} />
                 <Title>
                   <TextLink href={paper.open_access_url || paper.doi_url}>{paper.title}</TextLink>

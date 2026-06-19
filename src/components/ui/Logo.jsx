@@ -44,6 +44,7 @@ const Logo = ({ name, size = 24, url, style = {} }) => {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={(e) => e.stopPropagation()}
       style={{ textDecoration: 'none', color: 'inherit', display: 'inline-flex' }}
     >
       {image}

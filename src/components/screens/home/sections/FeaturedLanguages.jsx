@@ -59,8 +59,9 @@ function FeaturedLanguages() {
           {featured.map((lang) => {
             const lit = lang.associations?.literature?.[0]
             const uni = lang.associations?.institutions?.[0]
+            const paperUrl = lit?.open_access_url || lit?.doi_url
             return (
-              <Card key={lang.languageId || lang.id}>
+              <Card key={lang.languageId || lang.id} href={paperUrl}>
                 <Header>
                   <Name>{lang.name}</Name>
                   {uni && <Logo name={uni.name || uni.shortName} size={20} />}

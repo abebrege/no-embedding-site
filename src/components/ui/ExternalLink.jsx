@@ -18,10 +18,17 @@ const Anchor = styled('a')({
 
 // Renders a safe external link, or nothing when href is falsy.
 // This is how "use every available URL, hide the rest" stays clean.
+// Stops click propagation so the link works on its own inside a clickable Card.
 const ExternalLink = ({ href, children, ...rest }) => {
   if (!href) return null
   return (
-    <Anchor href={href} target="_blank" rel="noopener noreferrer" {...rest}>
+    <Anchor
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={(e) => e.stopPropagation()}
+      {...rest}
+    >
       {children}
     </Anchor>
   )
