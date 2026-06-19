@@ -6,12 +6,11 @@ const LogoImage = styled('img')({
   objectFit: 'contain',
 })
 
-const InstitutionLogo = ({ name, size = 24, style = {} }) => {
+const InstitutionLogo = ({ name, size = 24, style = {}, url = null }) => {
   const [currentFormatIndex, setCurrentFormatIndex] = useState(0)
   const [hasError, setHasError] = useState(false)
-
   const formats = ['png', 'jpg', 'svg', 'webp', 'avif']
-  
+
   const getLogoUrl = (institutionName, format) => {
     if (!institutionName) return null
     return `/institutions/${encodeURIComponent(institutionName)}.${format}`
@@ -36,17 +35,28 @@ const InstitutionLogo = ({ name, size = 24, style = {} }) => {
   const currentUrl = getLogoUrl(name, formats[currentFormatIndex])
 
   return (
-    <LogoImage
-      src={currentUrl}
-      alt={`${name} logo`}
-      onError={handleError}
-      onLoad={handleLoad}
-      style={{ 
-        height: `${size}px`, 
-        width: `${size}px`,
-        ...style 
-      }}
-    />
+    <>
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ textDecoration: 'none', color: 'inherit', ...style }}
+      >
+        <LogoImage
+          src={currentUrl}
+          alt={`${name} logo`}
+          onError={handleError}
+          onLoad={handleLoad}
+          style={{
+            height: `${size}px`,
+            width: `${size}px`,
+            ...style
+          }}
+          {...(url && { href: url })}
+        />
+      </a>
+    </>
+
   )
 }
 

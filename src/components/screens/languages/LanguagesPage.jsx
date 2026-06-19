@@ -183,6 +183,9 @@ function LanguagesPage() {
               {language.code && <LanguageCode>Code: {language.code}</LanguageCode>}
               {language.type && <LanguageType>{language.type}</LanguageType>}
               {language.host && <LanguageHost>{language.host}</LanguageHost>}
+              {language.repoUrl &&
+                <InstitutionLogo name={"github-logo"} size={20} style={{ alignSelf: "flex-start", marginTop: "1px" }} url={language.repoUrl} />
+              }
             </LanguageHeader>
             <LanguageName>{language.name}</LanguageName>
             {language.description && <Description>{language.description}</Description>}
