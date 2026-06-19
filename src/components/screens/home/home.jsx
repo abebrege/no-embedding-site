@@ -109,6 +109,9 @@ function Home() {
           For software engineers and researchers interested in building high level quantum programming languages.
         </Body>
         <Body>
+          Most specifically quantum control flow, with some coverage of debugging and uncomputation as well.
+        </Body>
+        <Body>
           Contributions are welcome and appreciated; open a PR{' '}
           <TextLink href="https://github.com/abebrege/no-embedding-site">here</TextLink>{' '}
           for any corrections or additions.

@@ -1,35 +1,37 @@
+// Color tokens resolve to CSS variables defined in theme.css, so flipping
+// <html data-theme="dark"> live re-themes every component. See useColorMode.js.
 const theme = {
   color: {
-    background: '#0b0f1a',
-    surface: '#121826',
-    surfaceAlt: '#0f141f',
+    background: 'var(--color-background)',
+    surface: 'var(--color-surface)',
+    surfaceAlt: 'var(--color-surface-alt)',
     text: {
-      primary: '#e6e9f0',
-      secondary: '#9aa3b2',
-      heading: '#f5f7fa',
+      primary: 'var(--color-text-primary)',
+      secondary: 'var(--color-text-secondary)',
+      heading: 'var(--color-text-heading)',
     },
     border: {
-      primary: '#2a3346',
-      secondary: '#1c2433',
+      primary: 'var(--color-border-primary)',
+      secondary: 'var(--color-border-secondary)',
     },
     accent: {
-      default: '#3b82f6',
-      background: 'rgba(59, 130, 246, 0.12)',
-      border: 'rgba(59, 130, 246, 0.5)',
+      default: 'var(--color-accent)',
+      background: 'var(--color-accent-bg)',
+      border: 'var(--color-accent-border)',
     },
     code: {
-      background: '#0f141f',
+      background: 'var(--color-code-bg)',
     },
     // Retained so existing components (BackButton, DetailChip, home node cards)
     // keep a valid token; removed when Home is rebuilt (Phase 8).
     social: {
-      background: '#121826',
+      background: 'var(--color-social-bg)',
     },
     link: {
-      default: '#7aa2ff',
-      hover: '#a9c2ff',
+      default: 'var(--color-link)',
+      hover: 'var(--color-link-hover)',
     },
-    shadow: '0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4)',
+    shadow: 'var(--shadow)',
   },
 
   font: {
