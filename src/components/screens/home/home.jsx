@@ -116,7 +116,7 @@ function Home() {
           <NavLink to="/languages">Languages</NavLink>
           <NavLink to="/literature">Literature</NavLink>
           <NavLink to="/institutions">Institutions</NavLink>
-          <NavAnchor href="https://github.com/abebrege/no-embedding-site" target="_blank" rel="noopener noreferrer">Contribute</NavAnchor>
+          {/* <NavAnchor href="https://github.com/abebrege/no-embedding-site" target="_blank" rel="noopener noreferrer">Contribute</NavAnchor> */}
         </Nav>
       </Hero>
 
