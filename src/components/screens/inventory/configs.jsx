@@ -6,22 +6,26 @@ import Logo from '../../ui/Logo.jsx'
 import LinkRow from '../../ui/LinkRow.jsx'
 import AssociationList from '../../ui/AssociationList.jsx'
 import TextLink from '../../ui/TextLink.jsx'
+import { languageSummaries } from '../../../data/languageSummaries.js'
 
 const firstLiterature = (lang) => lang.associations?.literature?.[0]
 const firstInstitution = (entity) => entity.associations?.institutions?.[0]
+const typeHost = (l) => [l.type, l.host].filter(Boolean).join(' / ') || '—'
+const summaryOf = (l) => languageSummaries[l.name] || l.summary || ''
 
 export const languagesConfig = {
   title: 'Languages',
   fetcher: getLanguages,
   keyOf: (l) => l.languageId || l.id,
   columns: [
-    { key: 'name', header: 'Name', render: (l) => l.name },
+    { key: 'name', header: 'Name', render: (l) => l.name, sortValue: (l) => l.name },
     {
       key: 'typeHost',
       header: 'Type / Host',
-      render: (l) => [l.type, l.host].filter(Boolean).join(' / ') || '—',
+      render: typeHost,
+      sortValue: typeHost,
     },
-    { key: 'summary', header: 'Summary', render: (l) => l.summary || '' },
+    { key: 'summary', header: 'Summary', render: summaryOf, sortValue: summaryOf },
     {
       key: 'links',
       header: 'Links',
@@ -44,9 +48,14 @@ export const literatureConfig = {
   fetcher: getLiterature,
   keyOf: (l) => l.literatureId || l.id,
   columns: [
-    { key: 'title', header: 'Title', render: (l) => l.title },
-    { key: 'author', header: 'Author', render: (l) => l.author },
-    { key: 'year', header: 'Year', render: (l) => l.publication_year || '—' },
+    { key: 'title', header: 'Title', render: (l) => l.title, sortValue: (l) => l.title },
+    { key: 'author', header: 'Author', render: (l) => l.author, sortValue: (l) => l.author },
+    {
+      key: 'year',
+      header: 'Year',
+      render: (l) => l.publication_year || '—',
+      sortValue: (l) => l.publication_year ?? null,
+    },
     {
       key: 'university',
       header: 'University',
@@ -54,6 +63,7 @@ export const literatureConfig = {
         const uni = firstInstitution(l)
         return uni ? <Logo name={uni.name || uni.shortName} size={28} /> : null
       },
+      sortValue: (l) => firstInstitution(l)?.name || '',
     },
     {
       key: 'links',
@@ -68,7 +78,7 @@ export const institutionsConfig = {
   fetcher: getInstitutions,
   keyOf: (i) => i.institutionId || i.id,
   columns: [
-    { key: 'shortName', header: 'Short Name', render: (i) => i.shortName || '—' },
+    { key: 'shortName', header: 'Short Name', render: (i) => i.shortName || '—', sortValue: (i) => i.shortName || '' },
     {
       key: 'name',
       header: 'Name',
@@ -78,9 +88,10 @@ export const institutionsConfig = {
           {i.name}
         </div>
       ),
+      sortValue: (i) => i.name || '',
     },
-    { key: 'location', header: 'Location', render: (i) => i.location || '—' },
-    { key: 'type', header: 'Type', render: (i) => i.type || '—' },
+    { key: 'location', header: 'Location', render: (i) => i.location || '—', sortValue: (i) => i.location || '' },
+    { key: 'type', header: 'Type', render: (i) => i.type || '—', sortValue: (i) => i.type || '' },
     {
       key: 'researchGroups',
       header: 'Research Groups',

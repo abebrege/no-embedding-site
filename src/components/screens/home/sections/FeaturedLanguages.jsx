@@ -8,20 +8,7 @@ import Logo from '../../../ui/Logo.jsx'
 import LinkRow from '../../../ui/LinkRow.jsx'
 import SectionHeading from '../../../ui/SectionHeading.jsx'
 import Loading from '../../../ui/Loading.jsx'
-
-// Source of truth for which languages are featured, in what order, and the
-// short summary shown on each card.
-const FEATURED = [
-  { name: 'Qwerty', summary: 'A basis-oriented quantum language embedded in Python that reasons about bases and functions instead of individual qubits and gates.' },
-  { name: 'Qrisp', summary: 'A high-level Python framework with managed QuantumVariables and automatic qubit allocation, lifting programming above the circuit level.' },
-  { name: 'Silq', summary: 'A high-level language that automatically and safely uncomputes temporary values for shorter, more intuitive quantum programs.' },
-  { name: 'QWire', summary: 'A minimal, formally verified core language for quantum circuits that interfaces with a classical host under the QRAM model.' },
-  { name: 'Qunity', summary: 'A unified functional language expressing classical and quantum computation in one syntax with reversible semantics.' },
-  { name: 'Tower', summary: 'A language for building pointer-based data structures, such as linked lists and trees, that live in quantum superposition.' },
-  { name: 'Quipper', summary: 'A scalable, higher-order functional quantum language embedded in Haskell for describing large quantum circuits.' },
-  { name: 'Twist', summary: 'A quantum language whose type system tracks purity and entanglement to statically verify assumptions about qubits.' },
-  { name: 'Scaffold', summary: 'A C-like quantum programming language compiled by ScaffCC for expressing and analyzing large-scale quantum programs.' },
-]
+import { FEATURED_LANGUAGES as FEATURED } from '../../../../data/languageSummaries.js'
 
 const Grid = styled('div')({
   display: 'grid',
