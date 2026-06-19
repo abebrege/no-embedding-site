@@ -43,19 +43,6 @@ const Thumb = styled('img')({
   marginBottom: theme.spacing.sm,
 })
 
-// Optional paper thumbnail from /papers/<title>.png; hides itself if absent.
-const PaperThumb = ({ title }) => {
-  const [hidden, setHidden] = useState(false)
-  if (hidden) return null
-  return (
-    <Thumb
-      src={`/papers/${encodeURIComponent(title)}.png`}
-      alt=""
-      onError={() => setHidden(true)}
-    />
-  )
-}
-
 function RecentResearch() {
   const { data, loading } = useResource(() => getLiterature({ sort: 'recent', limit: 10 }), [])
 
@@ -83,7 +70,7 @@ function RecentResearch() {
             const paperUrl = paper.open_access_url || paper.doi_url
             return (
               <Card key={paper.literatureId || paper.id} href={paperUrl}>
-                <PaperThumb title={paper.title} />
+                {/* <PaperThumb title={paper.title} /> */}
                 <Title>
                   <TextLink href={paper.open_access_url || paper.doi_url}>{paper.title}</TextLink>
                 </Title>
