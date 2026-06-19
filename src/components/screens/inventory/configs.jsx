@@ -34,7 +34,7 @@ export const languagesConfig = {
         const uni = firstInstitution(l)
         return (
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-            <LinkRow repo={l.repoUrl} paper={lit?.open_access_url} doi={lit?.doi_url} />
+            <LinkRow repo={l.repoUrl} paper={lit?.open_access_url} doi={lit?.doi_url} paperAsLink />
             {uni && <Logo name={uni.name || uni.shortName} />}
           </div>
         )
@@ -69,7 +69,7 @@ export const literatureConfig = {
     {
       key: 'links',
       header: 'Links',
-      render: (l) => <LinkRow paper={l.open_access_url} doi={l.doi_url} />,
+      render: (l) => <LinkRow paper={l.open_access_url} doi={l.doi_url} paperAsLink />,
     },
   ],
 }

@@ -35,11 +35,13 @@ const GithubLogo = styled('img')({
   '[data-theme="dark"] &': { filter: 'invert(1)' },
 })
 
-// A row of paper/repo links. `repo` renders as the GitHub logo, `paper` (the
-// open-access url) renders as an "Open Access" label, and `doi`/`group` render
-// as link pills. Each prop is a URL; only the present ones render. Renders
-// nothing when no links are supplied.
-const LinkRow = ({ repo, paper, doi, group }) => {
+// A row of paper/repo links. `repo` renders as the GitHub logo, `doi`/`group`
+// render as link pills, and `paper` (the open-access url) renders as a plain
+// "Open Access" label by default — used on cards whose whole surface already
+// links to the paper. Pass `paperAsLink` (e.g. in a non-clickable table row) to
+// render it as a clickable "Open Access" link instead. Each prop is a URL; only
+// the present ones render. Renders nothing when no links are supplied.
+const LinkRow = ({ repo, paper, doi, group, paperAsLink = false }) => {
   if (!repo && !paper && !doi && !group) return null
 
   return (
@@ -55,7 +57,12 @@ const LinkRow = ({ repo, paper, doi, group }) => {
           <GithubLogo src="/github.svg" alt="GitHub repository" width={20} height={20} />
         </GithubLink>
       )}
-      {paper && <Badge>Open Access</Badge>}
+      {paper &&
+        (paperAsLink ? (
+          <ExternalLink href={paper}>Open Access</ExternalLink>
+        ) : (
+          <Badge>Open Access</Badge>
+        ))}
       <ExternalLink href={doi}>DOI</ExternalLink>
       <ExternalLink href={group}>Research Group</ExternalLink>
     </Row>

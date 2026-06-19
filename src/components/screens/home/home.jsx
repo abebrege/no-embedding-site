@@ -102,15 +102,10 @@ function Home() {
       <Hero>
         <Title>No Embedding</Title>
         <Body>
-          For software engineers and researchers interested in building high level quantum programming languages.
+          A directory of research on high-level quantum programming languages.
         </Body>
         <Body>
-          Most specifically quantum control flow, with some coverage of debugging and uncomputation as well.
-        </Body>
-        <Body>
-          Contributions are welcome and appreciated; open a PR{' '}
-          <TextLink href="https://github.com/abebrege/no-embedding-site">here</TextLink>{' '}
-          for any corrections or additions.
+          Most material is related to quantum control, with some on uncomputation and debugging.
         </Body>
         <Nav>
           <NavLink to="/languages">Languages</NavLink>
