@@ -99,10 +99,6 @@ function Home() {
 
   return (
     <Column>
-      <Quote>
-        "Superficially this may strike the reader as a very negative, or perhaps schizophrenic, paper." - Bădescu and Panangaden 2015.
-      </Quote>
-
       <Hero>
         <Title>No Embedding</Title>
         <Body>
@@ -131,11 +127,14 @@ function Home() {
       </ThreeCol>
 
       <section>
-        <SectionHeading>Research Graph</SectionHeading>
         <DagScroll>
           <Dag institutions={institutions} />
         </DagScroll>
       </section>
+
+      <Quote>
+        "Superficially this may strike the reader as a very negative, or perhaps schizophrenic, paper." - Bădescu and Panangaden 2015.
+      </Quote>
     </Column>
   )
 }
