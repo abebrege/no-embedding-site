@@ -47,6 +47,7 @@ export const literatureConfig = {
   title: 'Literature',
   fetcher: getLiterature,
   keyOf: (l) => l.literatureId || l.id,
+  defaultSort: { key: 'year', dir: 'desc' },
   columns: [
     { key: 'title', header: 'Title', render: (l) => l.title, sortValue: (l) => l.title },
     { key: 'author', header: 'Author', render: (l) => l.author, sortValue: (l) => l.author },

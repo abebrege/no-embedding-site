@@ -45,8 +45,6 @@ const Td = styled('td')({
 })
 
 const compare = (a, b) => {
-  if (a == null) return 1
-  if (b == null) return -1
   if (typeof a === 'number' && typeof b === 'number') return a - b
   return String(a).localeCompare(String(b))
 }
@@ -54,14 +52,21 @@ const compare = (a, b) => {
 // Generic table driven by a column config. Each column is
 // { key, header, render(row), sortValue?(row) }; columns with a sortValue
 // are sortable by clicking the header.
-const InventoryTable = ({ columns, rows = [], keyOf }) => {
-  const [sort, setSort] = useState({ key: null, dir: 'asc' })
+const InventoryTable = ({ columns, rows = [], keyOf, defaultSort }) => {
+  const [sort, setSort] = useState(defaultSort || { key: null, dir: 'asc' })
 
   const sorted = useMemo(() => {
     const col = columns.find((c) => c.key === sort.key)
     if (!col || !col.sortValue) return rows
     const factor = sort.dir === 'asc' ? 1 : -1
-    return [...rows].sort((a, b) => compare(col.sortValue(a), col.sortValue(b)) * factor)
+    return [...rows].sort((a, b) => {
+      const av = col.sortValue(a)
+      const bv = col.sortValue(b)
+      const aEmpty = av == null || av === ''
+      const bEmpty = bv == null || bv === ''
+      if (aEmpty || bEmpty) return aEmpty === bEmpty ? 0 : aEmpty ? 1 : -1
+      return compare(av, bv) * factor
+    })
   }, [columns, rows, sort])
 
   const toggle = (col) => {

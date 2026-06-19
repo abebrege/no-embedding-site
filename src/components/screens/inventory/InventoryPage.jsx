@@ -16,7 +16,7 @@ function InventoryPage({ config }) {
 
   return (
     <PageShell title={config.title} count={rows.length}>
-      <InventoryTable columns={config.columns} rows={rows} keyOf={config.keyOf} />
+      <InventoryTable columns={config.columns} rows={rows} keyOf={config.keyOf} defaultSort={config.defaultSort} />
     </PageShell>
   )
 }
