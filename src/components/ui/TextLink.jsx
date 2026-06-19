@@ -5,7 +5,6 @@ import theme from '../../theme.js'
 const Anchor = styled('a')({
   color: theme.color.link.default,
   textDecoration: 'none',
-  '&:hover': { color: theme.color.link.hover, textDecoration: 'underline' },
 })
 
 // Inline text link: renders children linked when href is present, plain text
