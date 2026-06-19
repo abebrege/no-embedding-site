@@ -10,7 +10,7 @@ import SectionHeading from '../../../ui/SectionHeading.jsx'
 import Loading from '../../../ui/Loading.jsx'
 
 // Source of truth for which languages are featured, and in what order.
-const FEATURED = ['Silq', 'Qunity', 'Quipper', 'Tower', 'Twist', 'Scaffold', 'QWire', 'Qwerty', 'Qrisp']
+const FEATURED = ['Qwerty', 'Qrisp', 'Silq', 'QWire', 'Qunity', 'Tower', 'Quipper', 'Twist', 'Scaffold']
 
 const Grid = styled('div')({
   display: 'grid',
